@@ -44,9 +44,15 @@ zephyr/**
 
 # Exept the one we modify for the project
 # We need to include the parent file first each time, because it is not possible to re-include a file if a parent directory of that file is excluded
+# updatehub source file
 !zephyr/subsys/
 zephyr/susbsys/**
 !zephyr/subsys/mgmt/
 zephyr/susbsys/mgmt/**
 !zephyr/subsys/mgmt/updatehub/
 !zephyr/subsys/mgmt/updatehub/**
+# updatehub include file
+!zephyr/include/
+!zephyr/include/zephyr/
+!zephyr/include/zephyr/mgmt/
+!zephyr/include/zephyr/mgmt/updatehub.h
