@@ -57,6 +57,8 @@ LOG_MODULE_REGISTER(updatehub, CONFIG_UPDATEHUB_LOG_LEVEL);
 #define _STORAGE_SHA256_VERIFICATION
 #endif
 
+static char * s_updatehubServerAddress = UPDATEHUB_SERVER;
+
 static struct updatehub_context {
 	struct coap_block_context block;
 	struct k_sem semaphore;
@@ -1019,4 +1021,9 @@ void z_impl_updatehub_autohandler(void)
 
 	k_work_init_delayable(&updatehub_work_handle, autohandler);
 	k_work_reschedule(&updatehub_work_handle, K_NO_WAIT);
+}
+
+void z_impl_updatehub_change_server_addr(const char * host)
+{
+	LOG_INF("Server addr : %s", s_updatehubServerAddress);
 }

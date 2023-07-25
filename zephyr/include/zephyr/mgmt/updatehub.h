@@ -90,6 +90,12 @@ __syscall int updatehub_confirm(void);
  */
 __syscall int updatehub_reboot(void);
 
+/**
+ * @brief Change the ip address of the UpdateHub server if CE is choosen
+ *
+ */
+__syscall void updatehub_change_server_addr(const char * host);
+
 #ifdef __cplusplus
 }
 #endif
