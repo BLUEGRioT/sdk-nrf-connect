@@ -1025,7 +1025,12 @@ void z_impl_updatehub_autohandler(void)
 
 void z_impl_updatehub_change_server_addr(const char * host)
 {
-	LOG_DBG("Old Server addr : %s", s_updatehubServerAddress);
+#if defined(CONFIG_UPDATEHUB_CE)
 	strcpy(s_updatehubServerAddress, host);
-	LOG_DBG("New Server addr : %s", s_updatehubServerAddress);
+#endif
+}
+
+char * z_impl_updatehub_get_server_addr(void)
+{
+	return s_updatehubServerAddress;
 }

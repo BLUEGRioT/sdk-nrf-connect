@@ -106,6 +106,12 @@ __syscall int updatehub_reboot(void);
  */
 __syscall void updatehub_change_server_addr(const char * host);
 
+/**
+ * @brief Get the curruent ip address of the UpdateHub server
+ *
+ */
+__syscall char * updatehub_get_server_addr(void);
+
 #ifdef __cplusplus
 }
 #endif
