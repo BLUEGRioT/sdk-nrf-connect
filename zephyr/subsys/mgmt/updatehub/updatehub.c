@@ -57,7 +57,7 @@ LOG_MODULE_REGISTER(updatehub, CONFIG_UPDATEHUB_LOG_LEVEL);
 #define _STORAGE_SHA256_VERIFICATION
 #endif
 
-static char * s_updatehubServerAddress = UPDATEHUB_SERVER;
+static char s_updatehubServerAddress[UPDATEHUB_SERVER_ADDR_MAX_SIZE] = UPDATEHUB_SERVER;
 
 static struct updatehub_context {
 	struct coap_block_context block;
@@ -195,7 +195,7 @@ static bool start_coap_client(void)
 #endif
 
 	while (resolve_attempts--) {
-		ret = getaddrinfo(UPDATEHUB_SERVER, port, &hints, &addr);
+		ret = getaddrinfo(s_updatehubServerAddress, port, &hints, &addr);
 		if (ret == 0) {
 			break;
 		}
@@ -1025,5 +1025,7 @@ void z_impl_updatehub_autohandler(void)
 
 void z_impl_updatehub_change_server_addr(const char * host)
 {
-	LOG_INF("Server addr : %s", s_updatehubServerAddress);
+	LOG_DBG("Old Server addr : %s", s_updatehubServerAddress);
+	strcpy(s_updatehubServerAddress, host);
+	LOG_DBG("New Server addr : %s", s_updatehubServerAddress);
 }

@@ -40,6 +40,16 @@ enum updatehub_response {
 };
 
 /**
+ * @brief Max size of the updatehub server address
+ *
+ * @details IPV6 has max 39 characters, 8 groups of 4digits and 7 ':' between them
+ * Also add one byte for the end of string character '\0' to stock the value entirely
+ * in an array of char
+ *
+ */
+#define UPDATEHUB_SERVER_ADDR_MAX_SIZE	40	
+
+/**
  * @brief Runs UpdateHub probe and UpdateHub update automatically.
  *
  * @details The updatehub_autohandler handles the whole process
