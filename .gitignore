@@ -56,3 +56,9 @@ zephyr/susbsys/mgmt/**
 !zephyr/include/zephyr/
 !zephyr/include/zephyr/mgmt/
 !zephyr/include/zephyr/mgmt/updatehub.h
+
+# Same withh bootloader, olny keep track of change in our keys folder
+bootloader/**
+!bootloader/mcuboot/
+!bootloader/mcuboot/reyouzz_keys/
+!bootloader/mcuboot/reyouzz_keys/**
